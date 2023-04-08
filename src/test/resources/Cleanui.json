@@ -1,0 +1,17 @@
+{
+  "name":"testData",
+  "urlList":[
+    {
+      "url":"https://mail.ru/",
+      "website": "mail.ru"
+    },
+    {
+     "url":"https://ru.stackoverflow.com/",
+      "website": "stackoverflow.com"
+    },
+    {
+      "url":"https://www.yandex.ru/",
+      "website":"yandex.ru"
+    }
+  ]
+}

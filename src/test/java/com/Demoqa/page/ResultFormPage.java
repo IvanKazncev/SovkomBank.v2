@@ -1,4 +1,4 @@
-package com.demoqa.page;
+package com.Demoqa.page;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -8,10 +8,11 @@ import static com.codeborne.selenide.Selenide.$;
 public class ResultFormPage {
     private final static String TITLE_TEXT = "Thanks for submitting the form";
 
-    public void checkVisible() {
+    public ResultFormPage checkVisible() {
         System.out.println("Итоговая таблица загрузилась");
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text(TITLE_TEXT));
+        return this;
     }
 
     public ResultFormPage checkResult(String key, String value, String name) {

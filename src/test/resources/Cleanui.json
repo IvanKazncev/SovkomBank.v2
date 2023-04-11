@@ -6,12 +6,20 @@
       "website": "mail.ru"
     },
     {
-     "url":"https://ru.stackoverflow.com/",
-      "website": "stackoverflow.com"
+     "url":"https://yandex.ru/search/?text=com.fasterxml.jackson.core.JsonParseException%3A+Unrecognized+token+%27src%27%3A+was+expecting+(JSON+String%2C+Number%2C+Array%2C+Object+or+token+%27null%27%2C+%27true%27+or+%27false%27)&lr=194&clid=2196598",
+      "website": "ya.ru"
     },
     {
-      "url":"https://www.yandex.ru/",
-      "website":"yandex.ru"
+      "url":"https://e.mail.ru/inbox/1:44481598ca13abea:0/",
+      "website":"mail.ru(middle)"
+    },
+    {
+      "url":"",
+      "website":"empty"
+    },
+    {
+      "url":"123",
+      "website":"numbers"
     }
   ]
 }

@@ -1,4 +1,4 @@
-package com.cleanui.models;
+package com.Cleanui.models;
 
 import io.qameta.allure.internal.shadowed.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

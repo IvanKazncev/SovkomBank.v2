@@ -1,6 +1,6 @@
-package com.demoqa.page;
+package com.Demoqa.page;
 
-import com.demoqa.elements.*;
+import com.Demoqa.elements.*;
 import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.By;
 
@@ -16,7 +16,9 @@ public class PracticeFormPage {
     Input email = new Input("Почту", $("#userEmail"));
     public final Button genderButton = new Button("Выбор пола", $(".custom-control-label"));
     public final Input telephoneNumber = new Input("Телефон", $("#userNumber"));
-    Calendar calendar = new Calendar("Practice Form", $(By.xpath("//DIV[@class='react-datepicker__day react-datepicker__day--008'][text()='8']")), $(".react-datepicker__month-select"), $(".react-datepicker__year-select"), $("#dateOfBirthInput"));
+    Calendar calendar = new Calendar("Practice Form", $(By.xpath("//DIV[@class='react-datepicker__day" +
+            " react-datepicker__day--008'][text()='8']")), $(".react-datepicker__month-select"),
+            $(".react-datepicker__year-select"), $("#dateOfBirthInput"));
     InputWithAutoFill subjects = new InputWithAutoFill("Предметы", $("#subjectsInput"));
     Button hobbies = new Button("Хобби", $("#hobbiesWrapper"));
     UpLoadFile picture = new UpLoadFile("Изображение", $("#uploadPicture"));
@@ -26,66 +28,81 @@ public class PracticeFormPage {
     Button submit = new Button("Submit", $("#submit"));
 
 
-    public void openPage() {
+    public PracticeFormPage openPage() {
         url.openUrl();
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
+        return this;
     }
 
-    public void setFirstName(String value) {
+    public PracticeFormPage setFirstName(String value) {
         firstName.setValue(value);
+        return this;
     }
 
-    public void setLastName(String value) {
+    public PracticeFormPage setLastName(String value) {
         lastname.setValue(value);
+        return this;
     }
 
-    public void setEmail(String value) {
+    public PracticeFormPage setEmail(String value) {
         email.setValue(value);
+        return this;
     }
 
-    public void setGender() {
+    public PracticeFormPage setGender() {
         genderButton.click();
+        return this;
     }
 
-    public void setTelephoneNumber(String value) {
+    public PracticeFormPage setTelephoneNumber(String value) {
         telephoneNumber.setValue(value);
+        return this;
     }
 
-    public void setCalendar(String month, String year, String day) {
+    public PracticeFormPage setCalendar(String month, String year, String day) {
         calendar.setCalendar(month, year, day);
+        return this;
     }
 
-    public void setSubjects(String value) {
+    public PracticeFormPage setSubjects(String value) {
         subjects.setSubjects(value);
+        return this;
     }
 
-    public void setHobbies() {
+    public PracticeFormPage setHobbies() {
         hobbies.click();
+        return this;
     }
 
-    public void setPicture(String value) {
+    public PracticeFormPage setPicture(String value) {
         picture.upLoadFile(value);
+        return this;
     }
 
-    public void setCurrentAddress(String value) {
+    public PracticeFormPage setCurrentAddress(String value) {
         currentAddress.setValue(value);
+        return this;
     }
 
-    public void setState(String value) {
+    public PracticeFormPage setState(String value) {
         state.set(value);
+        return this;
     }
 
-    public void setCity(String value) {
+    public PracticeFormPage setCity(String value) {
         city.set(value);
+        return this;
     }
 
-    public void submit() {
+    public PracticeFormPage submit() {
         submit.click();
+        return this;
     }
 
     public String InputGetCssValue(@NotNull Input selector, String value) {
         String color = selector.getCssValue(value);
         return color;
+
     }
 
     public String ButtonGetCssValue(@NotNull Button selector, String value) {

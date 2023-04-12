@@ -18,6 +18,7 @@ public class PracticeFormTest extends BaseTest {
     ResultFormPage resultFormPage = new ResultFormPage();
     InvalidData invalidData = new InvalidData();
 
+
     @Test
     @DisplayName("Проверка заполнения формы валидными данными")
     public void CompletionFormTest() {
@@ -63,12 +64,12 @@ public class PracticeFormTest extends BaseTest {
         Selenide.sleep(500);
 
         assertThat(invalidData.getInputRedColor()).as("Ввод имени - цвет не совпадает")
-                .isEqualTo(practiceFormPage.InputGetCssValue(practiceFormPage.firstName, "border-color"));
+                .isEqualTo(practiceFormPage.InputGetCssValueFirstName());
         assertThat(invalidData.getInputRedColor()).as("Ввод фамилии - цвет не совпадает")
-                .isEqualTo(practiceFormPage.InputGetCssValue(practiceFormPage.lastname, "border-color"));
+                .isEqualTo(practiceFormPage.InputGetCssValueLastName());
         assertThat(invalidData.getInputRedColor()).as("Ввод телефона - цвет не совпадает")
-                .isEqualTo(practiceFormPage.InputGetCssValue(practiceFormPage.telephoneNumber, "border-color"));
-        assertThat(practiceFormPage.ButtonGetCssValue(practiceFormPage.genderButton, "color"))
+                .isEqualTo(practiceFormPage.InputGetCssValueTelephoneNumber());
+        assertThat(practiceFormPage.ButtonGetCssValueGender())
                 .as("Кнопка выбора пола - цвет не совпадает")
                 .isEqualTo(invalidData.getButtonRedColor());
     }
@@ -83,7 +84,7 @@ public class PracticeFormTest extends BaseTest {
         Selenide.sleep(500);
 
         assertThat(invalidData.getInputRedColor()).as("Ввод телефона - цвет не совпадает")
-                .isEqualTo(practiceFormPage.InputGetCssValue(practiceFormPage.telephoneNumber, "border-color"));
+                .isEqualTo(practiceFormPage.InputGetCssValueTelephoneNumber());
 
     }
 }

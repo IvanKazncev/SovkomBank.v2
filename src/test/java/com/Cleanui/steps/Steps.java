@@ -6,9 +6,6 @@ import static io.restassured.RestAssured.given;
 
 public class Steps {
 
-    public Steps() {
-    }
-
     public ResponseModel apiTest(String website, Integer statusCode) {
         ResponseModel response = given()
                 .log().all()

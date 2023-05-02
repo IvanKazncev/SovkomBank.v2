@@ -11,8 +11,7 @@ import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Тестирование укорачивания ссылок")
-public class ApiCleanTest {
-    Steps steps = new Steps();
+public class ApiCleanTest extends Steps {
     GetData getData = new GetData();
     public ApiCleanTest() throws IOException {
     }
@@ -22,7 +21,7 @@ public class ApiCleanTest {
     @DisplayName("Тест длинной ссылки (205 символов)")
     void cleanUiTest() {
         System.out.println("Тест длинной ссылки (205 символов)");
-        assertThat(steps.apiTest(getData.getUrl("ya.ru"), 200).getResult_url())
+        assertThat(apiTest(getData.getUrl("ya.ru"), 200).getResult_url())
                 .isNotEmpty()
                 .as("Проверка длинной ссылки не удалась")
                 .isEqualTo("https://cleanuri.com/jYNOAE");
@@ -30,7 +29,7 @@ public class ApiCleanTest {
     @Test
     @DisplayName("Тест короткой ссылки (16 символов)")
     void cleanUiSmallUrlTest() {
-        assertThat(steps.apiTest(getData.getUrl("mail.ru"), 200).getResult_url())
+        assertThat(apiTest(getData.getUrl("mail.ru"), 200).getResult_url())
                 .isNotEmpty()
                 .as("Проверка короткой ссылки не удалась")
                 .isEqualTo("https://cleanuri.com/2r83oJ");
@@ -38,7 +37,7 @@ public class ApiCleanTest {
     @Test
     @DisplayName("Тест средней ссылки (61 символ) ")
     void cleanUiMiddleUrlTest() {
-        assertThat(steps.apiTest(getData.getUrl("mail.ru(middle)"), 200).getResult_url())
+        assertThat(apiTest(getData.getUrl("mail.ru(middle)"), 200).getResult_url())
                 .isNotEmpty()
                 .as("Проверка средней ссылки не удалась")
                 .isEqualTo("https://cleanuri.com/Zn8grW");
@@ -46,7 +45,7 @@ public class ApiCleanTest {
     @Test
     @DisplayName("Тест пустой ссылки")
     void cleanUiEmptyUrlTest() {
-        assertThat(steps.apiTest(getData.getUrl("empty"), 400).getError())
+        assertThat(apiTest(getData.getUrl("empty"), 400).getError())
                 .isNotEmpty()
                 .as("Проверка отправки пустой ссылки не удалась")
                 .contains("URL is empty");
@@ -54,7 +53,7 @@ public class ApiCleanTest {
     @Test
     @DisplayName("Отправка невалидной ссылки")
     void cleanUiInvalidUrlTest() {
-        assertThat(steps.apiTest(getData.getUrl("numbers"), 400).getError())
+        assertThat(apiTest(getData.getUrl("numbers"), 400).getError())
                 .isNotEmpty()
                 .as("Проверка не корректной пустой ссылки не удалась")
                 .contains("URL is invalid");

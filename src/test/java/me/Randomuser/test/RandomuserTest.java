@@ -9,14 +9,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Тестирование Get запроса")
-public class RandomuserTest {
-    Step step = new Step();
+public class RandomuserTest extends Step {
     Data data = new Data();
 
     @Test
     @DisplayName("Проверка размера List (1 элемент)")
     void apiTest() {
-        assertThat(step.randomuserApiTest(data.getFemaleGender(), data.getMyList().get(2),
+        assertThat(randomuserApiTest(data.getFemaleGender(), data.getMyList().get(2),
                         data.getUrl(), 200)
                 .getResults().size()).as("Количество объектов не соответствует заявленной")
                 .isEqualTo(1);
@@ -25,7 +24,7 @@ public class RandomuserTest {
     @Test
     @DisplayName("Проверка размера List(2 элемента)")
     void numberOfElementsTest() {
-        assertThat(step.randomuserApiTest(data.getFemaleGender(), data.getMyList().get(3),
+        assertThat(randomuserApiTest(data.getFemaleGender(), data.getMyList().get(3),
                         data.getUrl(), 200)
                 .getResults().size()).as("Количество объектов не соответствует заявленной")
                 .isEqualTo(2);
@@ -34,7 +33,7 @@ public class RandomuserTest {
     @Test
     @DisplayName("Проверка размера List (10 элементов)")
     void numberOfElementsTest10() {
-        assertThat(step.randomuserApiTest(data.getMaleGender(), data.getMyList().get(4),
+        assertThat(randomuserApiTest(data.getMaleGender(), data.getMyList().get(4),
                         data.getUrl(), 200)
                 .getResults().size())
                 .as("Количество объектов не соответствует заявленной")
@@ -43,7 +42,7 @@ public class RandomuserTest {
     @Test
     @DisplayName("Проверка пола (мужской)")
     void genderMaleTest() {
-        assertThat(step.randomuserApiTest(data.getMaleGender(), data.getMyList().get(1), data.getUrl(), 200)
+        assertThat(randomuserApiTest(data.getMaleGender(), data.getMyList().get(1), data.getUrl(), 200)
                 .getResults().stream().map(RootModel::getGender).findFirst())
                 .as("Полученный пол не соответствует")
                 .contains(data.getMaleGender());
@@ -51,7 +50,7 @@ public class RandomuserTest {
     @Test
     @DisplayName("Проверка пола (женский)")
     void genderFemaleTest() {
-        assertThat(step.randomuserApiTest(data.getFemaleGender(), data.getMyList().get(2), data.getUrl(), 200)
+        assertThat(randomuserApiTest(data.getFemaleGender(), data.getMyList().get(2), data.getUrl(), 200)
                 .getResults().stream().map(RootModel::getGender))
                 .as("Полученный пол не соответствует")
                 .contains(data.getFemaleGender());
@@ -59,7 +58,7 @@ public class RandomuserTest {
     @Test
     @DisplayName("Проверка ввода некорректного пола")
     void negativeGenderTest() {
-        assertThat(step.randomuserApiTest(data.getUnCorrectGender(), data.getMyList().get(2), data.getUrl(), 200)
+        assertThat(randomuserApiTest(data.getUnCorrectGender(), data.getMyList().get(2), data.getUrl(), 200)
                 .getResults().stream().map(RootModel::getGender))
                 .as("Полученный пол не соответствует")
                 .contains(data.getMaleGender());
@@ -67,7 +66,7 @@ public class RandomuserTest {
     @Test
     @DisplayName("Проверка ввода некорректного размера List")
     void negativeListSizeTest() {
-        assertThat(step.randomuserApiTest(data.getFemaleGender(), data.getMyList().get(0),
+        assertThat(randomuserApiTest(data.getFemaleGender(), data.getMyList().get(0),
                         data.getUrl(), 200)
                 .getResults().size()).as("Количество объектов должно быть равно 1")
                 .isEqualTo(1);
